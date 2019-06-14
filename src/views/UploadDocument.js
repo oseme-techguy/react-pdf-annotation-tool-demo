@@ -74,7 +74,7 @@ class UploadDocument extends React.Component {
         </Row>
 
         <Row>
-          {/* Editor */}
+          {/* PDF Previewer */}
           <Col lg="9" md="12">
             <Grid centered columns={2}>
               <Grid.Column textAlign="center" onClick={this.nextPage}>

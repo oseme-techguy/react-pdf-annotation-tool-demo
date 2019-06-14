@@ -45,15 +45,5 @@ export default [
     path: "/user-profile-lite",
     layout: DefaultLayout,
     component: UserProfileLite
-  },
-  {
-    path: "/errors",
-    layout: DefaultLayout,
-    component: Errors
-  },
-  {
-    path: "/components-overview",
-    layout: DefaultLayout,
-    component: ComponentsOverview
-  },
+  }
 ];

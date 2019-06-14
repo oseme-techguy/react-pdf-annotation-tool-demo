@@ -19,16 +19,6 @@ export default function() {
       title: "Manager Users",
       htmlBefore: '<i class="material-icons">people</i>',
       to: "/manage-users",
-    },
-    {
-      title: "Forms & Components",
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: "/components-overview",
-    },
-    {
-      title: "Errors",
-      htmlBefore: '<i class="material-icons">error</i>',
-      to: "/errors",
     }
   ];
 }
