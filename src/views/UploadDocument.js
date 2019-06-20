@@ -9,19 +9,45 @@ import {
   Container,
   Row, Col
 } from "shards-react";
-
+import { Redirect } from 'react-router-dom';
 import { Grid, Form } from 'semantic-ui-react';
 import { Document, Page } from 'react-pdf';
+import { Store as DocumentStore, Constants } from "../store/document";
+import AppDispatcher from "../store/dispatcher.js"; 
 import PageTitle from "../components/common/PageTitle";
 
 
+const Store = new DocumentStore();
+
 class UploadDocument extends React.Component {
 
-  state = {
-    file: null,
-    pdfContent: 'N/A',
-    numPages: 0,
-    pageNumber: 1
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      file: null,
+      pdfContent: 'N/A',
+      numPages: 0,
+      pageNumber: 1
+    };
+
+    this.onStateChanged = this.onStateChanged.bind(this);
+    this.uploadDocument = this.uploadDocument.bind(this);
+  }
+
+  componentWillMount() {
+    Store.checkLoggedIn();
+    this.onStateChanged();
+    Store.addStateChangedListener(this.onStateChanged);
+  }
+
+  componentWillUnmount() {
+    Store.removeStateChangedListener(this.onStateChanged);
+  }
+
+  onStateChanged() {
+    this.setState({ });
   }
 
   async getBase64(file) {
@@ -32,6 +58,16 @@ class UploadDocument extends React.Component {
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result);
       reader.onerror = error => reject(error);
+    });
+  }
+
+  uploadDocument() {
+    AppDispatcher.dispatch({
+      actionType: Constants.UPLOAD_DOCUMENT,
+      payload: {
+        name: this.state.file.name,
+        pdf_content: this.state.pdfContent
+      }
     });
   }
 
@@ -68,6 +104,7 @@ class UploadDocument extends React.Component {
 
     return (
       <Container fluid className="main-content-container px-4 pb-4">
+        {!Store.isLoggedIn() && <Redirect to='/login' /> }
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
           <PageTitle sm="4" title="Upload Document" subtitle="Upload New Document" className="text-sm-left" />
@@ -137,7 +174,7 @@ class UploadDocument extends React.Component {
                     </div>
                   </ListGroupItem>
                   <ListGroupItem className="d-flex px-3 border-0">
-                    <Button outline theme="accent" size="sm" className="ml-auto">
+                    <Button outline theme="accent" size="sm" className="ml-auto" onClick={this.uploadDocument}>
                       <i className="material-icons">save</i> Upload PDF
                     </Button>
                   </ListGroupItem>

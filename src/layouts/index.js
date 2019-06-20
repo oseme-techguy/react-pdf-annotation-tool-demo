@@ -1,3 +1,4 @@
 import DefaultLayout from "./Default";
+import FullWidth from "./FullWidth";
 
-export { DefaultLayout };
+export { DefaultLayout, FullWidth };

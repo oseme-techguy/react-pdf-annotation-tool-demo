@@ -1,18 +1,20 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Layout Types
-import { DefaultLayout } from "./layouts";
+import { DefaultLayout, FullWidth } from './layouts';
 
 // Route Views
-import UserProfileLite from "./views/UserProfileLite";
-import Errors from "./views/Errors";
-import ComponentsOverview from "./views/ComponentsOverview";
+import UserProfileLite from './views/UserProfileLite';
+import Errors from './views/Errors';
+import ComponentsOverview from './views/ComponentsOverview';
 
-import Dashboard from "./views/Dashboard";
-import UploadDocument from "./views/UploadDocument";
-import ManageNamedEntities from "./views/ManageNamedEntities";
-import ManageUsers from "./views/ManageUsers";
+import Login from './views/Login';
+import Dashboard from './views/Dashboard';
+import UploadDocument from './views/UploadDocument';
+import DocumentAnnotationEditor from './views/DocumentAnnotationEditor';
+import ManageNamedEntities from './views/ManageNamedEntities';
+import ManageUsers from './views/ManageUsers';
 
 export default [
   {
@@ -32,6 +34,11 @@ export default [
     component: UploadDocument
   },
   {
+    path: "/annotate-document/:documentId",
+    layout: DefaultLayout,
+    component: DocumentAnnotationEditor
+  },
+  {
     path: "/manage-named-entities",
     layout: DefaultLayout,
     component: ManageNamedEntities
@@ -45,5 +52,10 @@ export default [
     path: "/user-profile-lite",
     layout: DefaultLayout,
     component: UserProfileLite
+  },
+  {
+    path: "/login",
+    layout: FullWidth,
+    component: Login
   }
 ];
