@@ -9,7 +9,7 @@ We manage the data using AWS RDS (prefer to use MySQL or Postgres).
 ----------  
   
 
-Demo found here -> [PDF Annotation Tool API Demo Service](https://pdf-annotation-api-demo.herokuapp.com/)  
+Demo found here -> [PDF Annotation Tool Demo Service](https://pdf-annotation-tool-demo.herokuapp.com)  
   
   
 Responsibilities of this tool
