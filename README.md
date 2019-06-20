@@ -7,8 +7,11 @@ We manage the data using AWS RDS (prefer to use MySQL or Postgres).
 
 
 ----------  
+  
 
-
+Demo found here -> [PDF Annotation Tool API Demo Service](https://pdf-annotation-api-demo.herokuapp.com/)  
+  
+  
 Responsibilities of this tool
 -------------
 
@@ -18,7 +21,6 @@ This service will manage the following:
  - Annotations on the uploaded PDF documents.  
  - Named Entities that should be used to extract annotations on Spacy.      
   
-
 
 ----------
 
